@@ -11,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/surfinn-ui/react-native-surfinn-popup.git"
+    "url": "https://github.com/surfinn-ui/popup.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
