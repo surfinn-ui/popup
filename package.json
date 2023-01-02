@@ -1,13 +1,14 @@
 {
   "name": "react-native-surfinn-popup",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React Native Surfinn Popup Component",
   "author": "Hyeongjin Yong <gilseonappa@gmail.com>",
   "license": "MIT",
   "keywords": [
     "react-native",
     "popup",
-    "surfinn"
+    "surfinn",
+    "surfinn-ui"
   ],
   "repository": {
     "type": "git",

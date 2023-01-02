@@ -5,7 +5,7 @@ surfinn-ui의 팝업 컴포넌트로 팝업의 기본 기능만을 제공하며,
 팝업은 필요한 곳에서 `<Popup ref={popupRef}></Popup>`을 사용하여 정의합니다.
 `ref`는 `remove`, `open`, `close` 메소드를 포함하는 객체입니다. `ref`의 메소드로 팝업을 조종합니다.
 
-`<PopupProvider/>`은 가능하면 앱에 정의한 네비게이션의 상위 노드로 설정하기를 권합니다. 모든 `Popup`은 `PopupProvider`가 정의된 위치에 표시됩니다.
+`<PopupProvider/>`은 가능하면 네비게이션의 상위 노드로 설정하기를 권장합니다. 모든 `Popup`은 `PopupProvider`가 정의된 위치에 표시됩니다. React Navigation의 하위 노드로 `PopupProvider`를 추가하면 스크린의 헤더가 팝업의 백드롭에 가려지지 않습니다.
 
 `Popup`은 오픈한 순서대로 쌓이고 가장 마지막에 오픈한 팝업이 가장 위에 표시됩니다. `ref.current.open()`를 사용하면 이미 열린 팝업을 맨앞으로 불러올 수 있습니다. `open()`을 여러번 호출해도 같은 팝업이 중복 생성되지는 않습니다.
 
@@ -55,6 +55,31 @@ const App = () => {
     </PopupProvider>
   );
 };
+
+const styles = StyleSheet.create({
+  popup: {
+    backgroundColor: '#ffffff',
+    shadowColor: '#000000',
+    shadowOffset: {width: 5, height: 5},
+    shadowOpacity: 0.5,
+    borderRadius: 10,
+    height: 200,
+    width: '80%',
+    padding: 24,
+    alignContent: 'center',
+    justifyContent: 'space-between',
+  },
+  popupTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  popupContent: {
+    fontSize: 18,
+    fontWeight: '400',
+    textAlign: 'center',
+  },
+});
 ```
 
 ## 속성
@@ -64,3 +89,7 @@ const App = () => {
 | **backdrop**        | boolean | `false`     | 백드롭 보임 / 숨김 |
 | **backdropColor**   | string  | `'#000000'` | 백드롭 색상        |
 | **backdropOpacity** | string  | `0.2`       | 백드롭 투명도      |
+
+
+## 소스
+https://github.com/surfinn-ui/popup.git
