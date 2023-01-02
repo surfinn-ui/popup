@@ -1,7 +1,7 @@
 import {forwardRef, ReactNode, useEffect} from 'react';
 import {usePopup} from './Popup.context';
 
-export interface PopupReturnType {
+export interface TPopupRef {
   open: () => void;
   close: () => void;
   remove: () => void;
@@ -9,28 +9,44 @@ export interface PopupReturnType {
 export interface IPopupProps {
   children: ReactNode;
   backdrop?: boolean;
+  backdropColor?: string;
   backdropOpacity?: number;
 }
 
 export const Popup = forwardRef(
   (
-    {backdrop = false, backdropOpacity = 0.1, children}: IPopupProps,
+    {
+      backdrop = false,
+      backdropColor = '#000000',
+      backdropOpacity = 0.1,
+      children,
+    }: IPopupProps,
     ref: any,
   ) => {
     const {add, remove, open, close} = usePopup()!;
 
     useEffect(() => {
-      const id = add({children, backdrop, backdropOpacity});
+      const id = add({children, backdrop, backdropColor, backdropOpacity});
       ref.current = {
         remove: () => remove(id),
         open: () => open(id),
         close: () => close(id),
-      } as PopupReturnType;
+      } as TPopupRef;
 
       return () => {
         remove(id);
       };
-    }, [children, ref, add, remove, open, close, backdrop, backdropOpacity]);
+    }, [
+      children,
+      ref,
+      add,
+      remove,
+      open,
+      close,
+      backdrop,
+      backdropColor,
+      backdropOpacity,
+    ]);
 
     return null;
   },

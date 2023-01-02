@@ -8,12 +8,14 @@ import Animated, {
 
 export interface IPopupViewProps {
   backdrop?: boolean;
+  backdropColor?: string;
   backdropOpacity?: number;
   children: React.ReactNode;
 }
 
 export const PopupView = ({
   backdrop,
+  backdropColor = '#000000',
   backdropOpacity = 0.2,
   children,
 }: IPopupViewProps) => {
@@ -35,7 +37,12 @@ export const PopupView = ({
   return (
     <Animated.View style={[styles.root, fadeIn]}>
       {backdrop && (
-        <View style={[styles.backdrop, {opacity: backdropOpacity}]} />
+        <View
+          style={[
+            styles.backdrop,
+            {backgroundColor: backdropColor, opacity: backdropOpacity},
+          ]}
+        />
       )}
       {children}
     </Animated.View>
@@ -59,7 +66,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    backgroundColor: '#000',
+    // backgroundColor: '#000',
     opacity: 1,
   },
 });
